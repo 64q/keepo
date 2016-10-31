@@ -15,7 +15,7 @@ java -jar keepo.jar -s imaqtpie
 
 The key-value store is organized like this:
 
-* Key : <channel>::<username>::<uuid>
+* Key : [channel]::[username]::[uuid]
 * Value : message content
 
 ## Development
