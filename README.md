@@ -5,10 +5,16 @@ Keepo is a small software to gather Twitch IRC chat entries and put them in a Re
 
 ## Usage
 
+Compile:
+
+```
+mvn clean install
+```
+
 Launch this application with Java 8:
 
 ```
-java -jar keepo.jar -s imaqtpie
+java -jar keepo-<VERSION>.jar -s imaqtpie
 ```
 
 ## Redis spec
