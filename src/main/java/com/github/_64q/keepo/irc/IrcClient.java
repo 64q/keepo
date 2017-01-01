@@ -15,8 +15,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.github._64q.keepo.config.Config;
+import com.github._64q.keepo.config.KeepoConfig;
+import com.github._64q.keepo.util.SystemUtils;
 
+/**
+ * A simple IRC client oriented to speak with Twitch IRC.
+ * 
+ * @author qlebourgeois &lt;contact@qlebourgeois.me&gt;
+ */
 @Service
 public class IrcClient {
 
@@ -26,7 +32,7 @@ public class IrcClient {
   // --- components
 
   @Autowired
-  private Config config;
+  private KeepoConfig config;
 
   // --- attributes
 
@@ -54,6 +60,9 @@ public class IrcClient {
    * Socket channel
    */
   private Socket socket;
+
+  /** Benchmark mode (without redis) */
+  private boolean benchmarkMode = SystemUtils.BENCHMARK_MODE;
 
   /**
    * Initialize the bean
@@ -86,7 +95,7 @@ public class IrcClient {
       while ((line = reader.readLine()) != null) {
         logIncoming(line);
 
-        if (!firstLevelHandler(line)) {
+        if (!benchmarkMode && !firstLevelHandler(line)) {
           secondLevelHandler(line, handler);
         }
       }

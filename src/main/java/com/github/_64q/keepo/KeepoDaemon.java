@@ -14,11 +14,12 @@ import com.github._64q.keepo.chat.ChatClient;
 @Component
 public class KeepoDaemon {
 
+  /** Chat client to use */
   @Autowired
   private ChatClient chatClient;
 
   public int run(String... chans) {
-    Assert.notEmpty(chans, "you must provide channels");
+    Assert.notEmpty(chans, "you must provide channels to the daemon");
 
     // testing
     chatClient.addChans(chans);

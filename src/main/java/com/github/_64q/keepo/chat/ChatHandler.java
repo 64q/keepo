@@ -26,10 +26,15 @@ public class ChatHandler implements IrcHandler {
     if (entry.isPresent()) {
       ChatEntry chat = entry.get();
 
-      LOG.info("parsed line [ channel = {}, user = {}, content = {} ]", chat.getChannel(),
-          chat.getUser(), chat.getContent());
-
+      logEntry(chat);
       redisClient.put(chat);
+    }
+  }
+
+  private void logEntry(ChatEntry chat) {
+    if (LOG.isDebugEnabled()) {
+      LOG.debug("parsed line [ channel = {}, user = {}, content = {} ]", chat.getChannel(),
+          chat.getUser(), chat.getContent());
     }
   }
 

@@ -11,7 +11,7 @@ Compile:
 mvn clean install
 ```
 
-Launch this application with Java 8:
+Launch the application with Java 8:
 
 ```
 java -jar keepo-<VERSION>.jar -s imaqtpie
@@ -26,10 +26,6 @@ The key-value store is organized like this:
 
 ## Development
 
-1. Launch the redis storage backend:
-
-```
-$ ./redis-docker.sh
-```
-
-2. Launch the application with arguments
+1. Launch the redis storage backend: `./redis-docker.sh`
+2. Hack keepo
+3. Launch the application with arguments from eclipse

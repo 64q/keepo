@@ -1,40 +1,36 @@
 package com.github._64q.keepo;
 
-import org.apache.commons.cli.BasicParser;
 import org.apache.commons.cli.CommandLine;
-import org.apache.commons.cli.HelpFormatter;
-import org.apache.commons.cli.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Hello world!
- *
+ * Application entrypoint
+ * 
+ * @author qlebourgeois &lt;contact@qlebourgeois.me&gt;
  */
-public class Application {
+public final class Application {
 
   /** Logger */
   private static final Logger LOG = LoggerFactory.getLogger(Application.class);
 
-  public static void main(String[] args) throws ParseException {
+  private Application() {
+    // private constructor
+  }
+
+  public static void main(String[] args) {
     LOG.info("launching keepo server");
 
-    CommandLine cmd = new BasicParser().parse(CmdLine.getOptions(), args);
+    CommandLine cmd = CmdLine.parse(args);
 
     if (cmd.hasOption("h")) {
-      printHelp(cmd);
+      CmdLine.printHelp();
     } else {
-      SpringBootstrap.getContext("com.github._64q").getBean(KeepoDaemon.class)
-          .run(cmd.getOptionValues("s"));
+      SpringBootstrap.getContext("com.github._64q").getBean(KeepoDaemon.class).run(cmd.getArgs());
     }
 
     LOG.info("exiting keepo server");
 
     System.exit(0);
-  }
-
-  private static void printHelp(CommandLine cmd) {
-    HelpFormatter formatter = new HelpFormatter();
-    formatter.printHelp("keepo", CmdLine.getOptions());
   }
 }

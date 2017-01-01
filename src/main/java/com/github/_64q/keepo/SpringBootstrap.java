@@ -4,12 +4,13 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
- * Utility to bootstrap spring
+ * Utility to bootstrap spring as a singleton
  * 
  * @author qlebourgeois &lt;contact@qlebourgeois.me&gt;
  */
-public class SpringBootstrap {
+public final class SpringBootstrap {
 
+  /** Spring context instance */
   private static ApplicationContext context;
 
   private SpringBootstrap() {
@@ -19,7 +20,7 @@ public class SpringBootstrap {
   /**
    * Get spring context (initialize it if not)
    * 
-   * @param pkgs base packages for scanning
+   * @param pkgs base packages for scanning (optional)
    * @return spring context
    */
   public static ApplicationContext getContext(String... pkgs) {
@@ -30,16 +31,4 @@ public class SpringBootstrap {
     return context;
   }
 
-  /**
-   * Short method call to spring context
-   * 
-   * @return spring context
-   */
-  public static ApplicationContext getContext() {
-    if (context == null) {
-      throw new UnsupportedOperationException("please initialize spring context before using it");
-    }
-
-    return context;
-  }
 }

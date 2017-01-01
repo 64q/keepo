@@ -1,9 +1,7 @@
 package com.github._64q.keepo.config;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.stereotype.Component;
 
 /**
  * Bean representing the configuration
@@ -11,11 +9,8 @@ import org.springframework.scheduling.annotation.EnableAsync;
  * @since 1.0
  * @author qlebourgeois &lt;contact@qlebourgeois.me&gt;
  */
-@Configuration
-@EnableAsync
-@PropertySource("classpath:configuration.properties")
-public class Config {
-
+@Component
+public class KeepoConfig {
   @Value("${keepo.redisAddress}")
   private String redisAddress;
 
@@ -31,6 +26,8 @@ public class Config {
   @Value("${keepo.ircPassword}")
   private String ircPassword;
 
+  // --- redis conf
+
   /**
    * Returns the redis server address
    * 
@@ -41,13 +38,15 @@ public class Config {
   }
 
   /**
-   * Retreive the TTL of redis entries (in seconds)
+   * Retrieve the TTL of redis entries (in seconds)
    * 
    * @return the redis entries ttl
    */
   public Integer getRedisTtl() {
-    return Integer.parseInt(this.redisTtl);
+    return Integer.parseInt(redisTtl);
   }
+
+  // --- IRC conf
 
   public String getIrcAddress() {
     return this.ircAddress;

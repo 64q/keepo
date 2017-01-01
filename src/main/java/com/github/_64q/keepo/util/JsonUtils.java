@@ -6,6 +6,11 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+/**
+ * JSON utilities (write json strings, parse, ...)
+ * 
+ * @author qlebourgeois &lt;contact@qlebourgeois.me&gt;
+ */
 public final class JsonUtils {
 
   private static final ObjectMapper MAPPER = new ObjectMapper();

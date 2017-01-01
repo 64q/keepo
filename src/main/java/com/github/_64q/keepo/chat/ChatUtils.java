@@ -20,7 +20,7 @@ public class ChatUtils {
    * Only 3 groups are currently used by the line parser : user, channel and content
    */
   public static final Pattern LINE_PATTERN =
-      Pattern.compile(":(?<user>.*)!(.*) ([A-Z]+) #(?<channel>.*) :(?<content>.*)");
+      Pattern.compile("^:(?<user>.*)!(.*) ([A-Z]+) #(?<channel>.*) :(?<content>.*)$");
 
   private ChatUtils() {
     // private constructor

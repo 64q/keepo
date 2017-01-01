@@ -1,5 +1,10 @@
 package com.github._64q.keepo.irc;
 
+/**
+ * Utilities class that stores method to converse with an IRC server
+ * 
+ * @author qlebourgeois &lt;contact@qlebourgeois.me&gt;
+ */
 public final class IrcUtils {
 
   private static final String PASS_CMD = "PASS oauth:%s";
