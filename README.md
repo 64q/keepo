@@ -14,7 +14,7 @@ mvn clean install
 Launch the application with Java 8:
 
 ```
-java -jar keepo-<VERSION>.jar -s imaqtpie
+java -jar keepo-<VERSION>.jar imaqtpie
 ```
 
 ## Redis spec
